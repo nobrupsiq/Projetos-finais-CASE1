@@ -53,5 +53,5 @@ npm install
 ### 3. Rode o servidor com o seguinte script
 
 ```bash
-
+npm start
 ```
