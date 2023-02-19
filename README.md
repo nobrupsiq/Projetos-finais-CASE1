@@ -1,7 +1,7 @@
 
 ## Sobre o projeto 📌
 
-Projeto desenvovido com intuito de fazer listagem. O site foi desenvolvido com ReactJS, React Bootstrap, Cors Express, Sqlite3 e nodemon.
+Projeto desenvolvido com intuito de fazer listagem. O site foi desenvolvido com ReactJS, React Bootstrap, Cors Express, Sqlite3 e nodemon.
 
 ## Pré-requisitos
 
