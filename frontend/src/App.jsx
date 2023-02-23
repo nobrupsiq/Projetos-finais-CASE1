@@ -3,6 +3,7 @@ import ContentsApi from "./api/ContentsApi";
 import { useEffect, useState } from "react";
 import CreateContentModal from "./components/CreateContentModal";
 import UpdateContentModal from "./components/UpdateContentModal";
+import "../public/index.css";
 
 function App() {
   const [contents, setContents] = useState();
@@ -54,11 +55,7 @@ function App() {
       const req = event.currentTarget.elements;
 
       await ContentsApi()
-        .createContent(
-          req.produto.value,
-          req.descricao.value,
-          Number(req.Valor.value)
-        )
+        .createContent(req.titulo.value, req.descricao.value, Number(req.porcentagem.value))
         .then((data) => {
           return data.json();
         })
@@ -67,9 +64,9 @@ function App() {
             ...contents,
             {
               id: res.contentId,
-              produto: req.produto.value,
+              titulo: req.titulo.value,
               descricao: req.descricao.value,
-              Valor: Number(req.Valor.value),
+              porcentagem: Number(req.porcentagem.value),
             },
           ]);
 
@@ -88,18 +85,18 @@ function App() {
 
       await ContentsApi().updateContent(
         selectedContent.id,
-        req.produto.value,
+        req.titulo.value,
         req.descricao.value,
-        Number(req.Valor.value)
+        Number(req.porcentagem.value)
       );
 
       const formattedContents = contents.map((cont) => {
         if (cont.id === selectedContent.id) {
           return {
             id: selectedContent.id,
-            produto: req.produto.value,
+            titulo: req.titulo.value,
             descricao: req.descricao.value,
-            Valor: Number(req.Valor.value),
+            porcentagem: Number(req.porcentagem.value),
           };
         }
 
@@ -126,15 +123,11 @@ function App() {
         w-100
         "
       >
-        <Button
-          className="mb-2"
-          onClick={handleShowCreateModal}
-          variant="outline-dark"
-        >
-          Registrar Produto 📦
+        <Button className="mb-2" onClick={handleShowCreateModal} variant="outline-dark">
+          Adicionar produto 📦
         </Button>
-        <Table striped bordered hover>
-          <thead className="listaB">
+        <Table bordered hover>
+          <thead className="borderTable">
             <tr>
               <th>Produto</th>
               <th>Descrição</th>
@@ -143,18 +136,15 @@ function App() {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="borderTable">
             {contents &&
               contents.map((cont) => (
                 <tr key={cont.id}>
-                  <td>{cont.produto}</td>
-                  <td>{cont.descricao}</td>
-                  <td>{cont.Valor}</td>
+                  <td>{cont.titulo.toUpperCase()}</td>
+                  <td>{cont.descricao.toUpperCase()}</td>
+                  <td>R$ {cont.porcentagem}</td>
                   <td>
-                    <Button
-                      onClick={() => deleteContent(cont.id)}
-                      variant="outline-danger"
-                    >
+                    <Button onClick={() => deleteContent(cont.id)} variant="outline-danger">
                       Excluir
                     </Button>
                     <Button
@@ -162,7 +152,7 @@ function App() {
                         handleShowUpdateModal();
                         setSelectedContent(cont);
                       }}
-                      variant="outline-warning"
+                      variant="outline-dark"
                       className="m-1"
                     >
                       Atualizar

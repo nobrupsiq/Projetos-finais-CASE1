@@ -1,24 +1,22 @@
 import { Modal, Button, Form } from "react-bootstrap";
-import "./style.css";
+import "../../public/index.css";
+
 function CreateContentModal(props) {
   return (
-    <div
-      className="modal show"
-      style={{ display: "block", position: "initial" }}
-    >
+    <div className="modal show" style={{ display: "block", position: "initial" }}>
       <Modal show={props.isModalOpen}>
         <Form
-          className="modalB"
+          className="modalb"
           onSubmit={(event) => {
             props.createContent(event);
           }}
         >
           <Modal.Header closeButton onClick={props.handleClose}>
-            <Modal.Title>Adicionar Produto 🗂</Modal.Title>
+            <Modal.Title>Adicionar produto</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <Form.Group controlId="produto">
+            <Form.Group controlId="titulo">
               <Form.Label>Produto</Form.Label>
               <Form.Control type="text" />
             </Form.Group>
@@ -30,16 +28,16 @@ function CreateContentModal(props) {
 
             <Form.Group controlId="porcentagem">
               <Form.Label>Valor</Form.Label>
-              <Form.Control type="text" placeholder="R$ 00,00" />
+              <Form.Control type="text" placeholder="00,00" />
             </Form.Group>
           </Modal.Body>
 
           <Modal.Footer>
             <Button variant="outline-dark" onClick={props.handleClose}>
-              Close
+              Fechar
             </Button>
             <Button variant="outline-success" type="submit">
-              Salvar
+              Adicionar
             </Button>
           </Modal.Footer>
         </Form>

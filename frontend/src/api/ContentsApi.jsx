@@ -18,7 +18,7 @@ const ContentsApi = () => {
           }
        })
       },
-      createContent (produto, descricao, valor) {
+      createContent (titulo, descricao, porcentagem) {
         return fetch(`${url}/conteudo`, {
           method: 'POST',
           headers: {
@@ -26,14 +26,14 @@ const ContentsApi = () => {
           },
           body: JSON.stringify(
             {
-              produto: produto,
+              titulo: titulo,
               descricao: descricao,
-              valor: valor
+              porcentagem: porcentagem
             }
           )
        })
       },
-      updateContent(contentId, produto, descricao, valor) {
+      updateContent(contentId, titulo, descricao, porcentagem) {
         return fetch(`${url}/conteudo/${contentId}`, {
           method: 'PUT',
           headers: {
@@ -41,9 +41,9 @@ const ContentsApi = () => {
           },
           body: JSON.stringify(
             {
-              produto: produto,
+              titulo: titulo,
               descricao: descricao,
-              valor: valor
+              porcentagem: porcentagem
             }
           )
        })

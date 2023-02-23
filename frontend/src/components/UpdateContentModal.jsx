@@ -1,12 +1,10 @@
 import { Modal, Button, Form } from "react-bootstrap";
 function UpdateContentModal(props) {
   return (
-    <div
-      className="modal show"
-      style={{ display: "block", position: "initial" }}
-    >
+    <div className="modal show" style={{ display: "block", position: "initial" }}>
       <Modal show={props.isModalOpen}>
         <Form
+          className="modalb"
           onSubmit={(event) => {
             props.updateContent(event);
           }}
@@ -16,35 +14,28 @@ function UpdateContentModal(props) {
           </Modal.Header>
 
           <Modal.Body>
-            <Form.Group controlId="produto">
+            <Form.Group controlId="titulo">
               <Form.Label>Produto</Form.Label>
-              <Form.Control defaultValue={props.content.produto} type="text" />
+              <Form.Control defaultValue={props.content.titulo} type="text" />
             </Form.Group>
 
             <Form.Group controlId="descricao">
               <Form.Label>Descrição</Form.Label>
-              <Form.Control
-                defaultValue={props.content.descricao}
-                type="text"
-              />
+              <Form.Control defaultValue={props.content.descricao} type="text" />
             </Form.Group>
 
-            <Form.Group controlId="valor">
+            <Form.Group controlId="porcentagem">
               <Form.Label>Valor</Form.Label>
-              <Form.Control
-                defaultValue={props.content.valor}
-                type="text"
-                placeholder="R$ 00,00"
-              />
+              <Form.Control defaultValue={props.content.porcentagem} type="text" />
             </Form.Group>
           </Modal.Body>
 
           <Modal.Footer>
             <Button variant="outline-dark" onClick={props.handleClose}>
-              Close
+              Fechar
             </Button>
             <Button variant="outline-success" type="submit">
-              Salvar
+              Atualizar
             </Button>
           </Modal.Footer>
         </Form>
