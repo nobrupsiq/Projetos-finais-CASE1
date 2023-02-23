@@ -5,7 +5,7 @@ import db from "./db.js";
 
 //==== Conteúdos
 const CONTENTS_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "conteudos" (
+CREATE TABLE IF NOT EXISTS "produtos" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "produto" text,
     "descricao" text,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS "conteudos" (
 
 function createTableContents() {
   db.run(CONTENTS_SCHEMA, (error) => {
-    if (error) console.log("Erro ao criar tabela de conteúdos");
+    if (error) console.log("Erro ao criar tabela de produtos");
   });
 }
 
